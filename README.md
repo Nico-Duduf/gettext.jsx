@@ -1,67 +1,8 @@
-# gettext.js [![npm version](https://badge.fury.io/js/gettext.js.svg)](https://badge.fury.io/js/gettext.js)
+# gettext.jsxinc
 
-gettext.js is a lightweight (3k minified!) yet complete and accurate GNU
-gettext port for node and the browser. Manage your i18n translations the right
-way in your javascript projects.
+gettext.jsxinc is a lightweight GNU gettext port for Adobe ExtendScript. Manage your i18n translations the right way in your Adobe projects.
 
-
-## Why another i18n javascript library?
-
-gettext.js aim is to port the famous GNU gettext and ngettext functions to
-javascript node and browser applications.
-It should be standards respectful and lightweight (no dictionary loading
-management, no extra features).
-
-The result is a < 200 lines javascript tiny lib yet implementing fully
-`gettext()` and `ngettext()` and having the lighter json translation files
-possible (embeding only translated forms, and not much headers).
-
-There are plenty good i18n libraries out there, notably
-[Jed](https://github.com/SlexAxton/Jed) and [i18n-next](http://i18next.com/),
-but either they are too complex and too heavy, or they do not embrace fully
-the gettext API and philosophy.
-
-There is also [gettext.js](https://github.com/Orange-OpenSource/gettext.js)
-which is pretty good and heavily inspired this one, but not active since 2012
-and without any tests.
-
-
-## Installation
-
-### Debian (9, stretch)
-
-apt-get install libjs-gettext.js
-
-### Node
-
-Install the lib with the following command: `npm install gettext.js --save`
-
-Require it in your project:
-
-```javascript
-var i18n = require('gettext.js')();
-i18n.gettext('foo');
-```
-
-For TypeScript definitions, use the third-party `@types/gettext.js` module.
-
-### Browser
-
-Download the latest
-[archive](https://github.com/guillaumepotier/gettext.js/archive/master.zip) or
-get it through bower: `bower install gettext.js --save`
-
-```html
-<script src="/path/to/dist/gettext.iife.js" type="text/javascript"></script>
-<script>
-  var i18n = window.i18n(options);
-  i18n.gettext('foo');
-</script>
-```
-
-In addition to the IIFE version, we also provide CommonJS (Node), AMD, and ESM
-releases. Instead of downloading, you may use a NPM CDN online such as unpkg or
-jsDelivr.
+This project is forked from [gettext.js](https://guillaumepotier.github.io/gettext.js/) by [Guillaume Potier](https://github.com/guillaumepotier) (thanks!).
 
 ## Usage
 
@@ -98,16 +39,7 @@ i18n.loadJSON(json, 'messages');
 
 See Required JSON format section below for more info.
 
-
 ### Set the locale
-
-You could do it from your dom
-
-```html
-<html lang="fr">
-```
-
-or from javascript
 
 ```javascript
 i18n.setLocale('fr');
@@ -115,10 +47,29 @@ i18n.setLocale('fr');
 
 ### Gettext functions
 
-* **`gettext(msgid)`**: Translate a string. Shorthand is **`__()`**.
+* **`gettext(msgid)`**: Translate a string. Shorthands are **`__()`**, **`_()`**, **`tr()`**.
 * **`ngettext(msgid, msgid_plural, n)`**: Translate a pluralizable string. Shorthand is **`_n()`**.
 * **`pgettext(msgctxt, msgid)`**: Translate a string specified by context. Shorthand is **`_p()`**.
 * **`dcnpgettext(domain, msgctxt, msgid, msgid_plural, n)`**: Translate a potentially pluralizable string, potentially specified by context, and potentially of a different domain (as specified in `setMessages` or `loadJSON`). No shorthand.
+
+### Example
+
+```js
+(function() {
+
+ #include "../lib/gettext.js"
+
+  i18n = i18n();
+
+  i18n.setMessages('messages', 'en', {
+    'Test failed!': 'Test successfull!',
+  }, 'nplurals=2; plural=n>1;');
+
+	i18n.setLocale('en');
+
+	alert(i18n._('Test failed!'));
+})();
+```
 
 ### Variabilized strings
 
@@ -128,8 +79,7 @@ All four functions above can take extra arguments for variablization.
 
 `ngettext('One %2', '%1 %2', 10, 'bananas');` -> "10 bananas"
 
-It uses the public method `i18n.strfmt("string", var1, var2, ...)` you could
-reuse elsewhere in your project.
+It uses the public method `i18n.strfmt("string", var1, var2, ...)` you could reuse elsewhere in your project.
 
 #### Literal percent sign (%)
 
@@ -141,39 +91,9 @@ or without variables
 
 `gettext('My credit card has an interest rate of %%20');` -> "My credit card has an interest rate of %20"
 
+## Required JSON format and PO files
 
-## Required JSON format
-
-You'll find in `/bin` a `po2json.js` converter, based on the excellent
-[po2json](https://github.com/mikeedwards/po2json) project that will dump your
-`.po` files into the proper json format below:
-
-```json
-{
-    "": {
-        "language": "en",
-        "plural-forms": "nplurals=2; plural=(n!=1);"
-    },
-    "simple key": "It's tranlation",
-    "another with %1 parameter": "It's %1 tranlsation",
-    "a key with plural": [
-        "a plural form",
-        "another plural form",
-        "could have up to 6 forms with some languages"
-    ],
-    "a context\u0004a contextualized key": "translation here"
-}
-```
-
-Use `bin/po2json.js input.po output.json` or
-`bin/po2json.js input.po output.json -p` for pretty format.
-
-
-## Parsers
-
-You could use [xgettext-php](https://github.com/Wisembly/xgettext-php) parser
-to parse your files. It provides helpful javascript and handlebars parsers.
-
+You'll find in `/bin` some converters to work with PO files and convert them to/from other formats.
 
 ## License
 
