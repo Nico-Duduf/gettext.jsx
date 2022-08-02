@@ -1,30 +1,32 @@
 import json
 
 # Load JSON file
-jsonPath = "inc/tr/Duik_fr.json"
-poPath = "translation/Duik2.pot"
+jsonPath = "../../After-Effects/Duik/DuGR/inc/tr/DuGR_empty.json"
+poPath = "../../After-Effects/Duik/DuGR/translation/DuGR.pot"
 
-poStr = """#, fuzzy
+poStr = """# Translations template for DuGR.
+# Copyright (C) 2022 RxLaboratory
+# This file is distributed under the same license as the DuGR project.
+# RxLaboratory <contact@rxlaboratory.org>, 2022.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Duik 17.0.0"
-"POT-Creation-Date: "
-"PO-Revision-Date: "
-"Last-Translator: "
-"Language-Team: RxLaboratory <http://rxlaboratory.org>"
-"MIME-Version: 1.0"
-"Content-Type: text/plain; charset=UTF-8"
-"Content-Transfer-Encoding: 8bit"
-"X-Generator: Poedit 3.1.1"
-"X-Poedit-SourceCharset: UTF-8"
-"X-Poedit-KeywordsList: tr;__;_;_n:1,2;_p:1c,2;gettext;ngettext:1,2;pgettext:1c,2;dcnpgettext:2c,3,4"
-
+"Project-Id-Version: DuGR 4.0.X\\n"
+"POT-Creation-Date: 2022-08-02 15:56\\n"
+"PO-Revision-Date: \\n"
+"Last-Translator: \\n"
+"Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+"Genereated-By: gettext.jsxinc\\n"
 """
 
 with open(jsonPath, "r", encoding="utf8") as jsonFile:
     jsonDoc = json.load(jsonFile)
 
-msgs = jsonDoc["Duik"][1]["translations"]
+msgs = jsonDoc["DuGR"][1]["translations"]
 
 for msg in msgs:
     comment =  msg["comment"]

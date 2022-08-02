@@ -32,3 +32,11 @@ Converter that will dump your `.po` files into the proper json format to use wit
 ```
 
 You need polib to run this script: `pip install polib`
+
+## jsxincToPot.py
+
+Extracts strings from a jsxinc source file.
+For now there are a few limitations:
+
+- There must be a single string per line
+- Translators comments must be at the end of the same line. They must start with `// TRANSLATORS:` or `/// TRANSLATORS:`
