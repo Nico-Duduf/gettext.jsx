@@ -1,5 +1,7 @@
 # Converters
 
+These are Python scripts (because who wants to use ESTK or launch After Effects or Indesign to run simple scripts?) to help you convert to and from *PO* translation files.
+
 ## dutrToPo.py
 
 Converts old *DuTranslator JSON* files to standard PO files for editing translations.
@@ -8,9 +10,9 @@ Converts old *DuTranslator JSON* files to standard PO files for editing translat
 
 Converts old *DuTranslator JSON* files to standard POT (templates) files for editing translations.
 
-## po2json.js
+## po2json.py
 
-Converter based on the excellent [po2json](https://github.com/mikeedwards/po2json) project that will dump your `.po` files into the proper json format to use with *gettext.jsxinc* below:
+Converter that will dump your `.po` files into the proper json format to use with *gettext.jsxinc* below:
 
 ```json
 {
@@ -29,4 +31,4 @@ Converter based on the excellent [po2json](https://github.com/mikeedwards/po2jso
 }
 ```
 
-Use `bin/po2json.js input.po output.json` or `bin/po2json.js input.po output.json -p` for pretty format.
+You need polib to run this script: `pip install polib`

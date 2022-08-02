@@ -1,0 +1,14 @@
+{
+    "": {
+        "language": "en",
+        "plural-forms": "nplurals=2; plural=(n!=1);"
+    },
+    "simple key": "Its translation",
+    "another with %1 parameter": "It's %1 translation",
+    "a key with plural": [
+        "a plural form",
+        "another plural form",
+        "could have up to 6 forms with some languages"
+    ],
+    "a context\u0004a contextualized key": "translation here"
+}
