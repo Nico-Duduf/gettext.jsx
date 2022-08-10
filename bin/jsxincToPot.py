@@ -79,7 +79,7 @@ def extract( source_path ):
             if source_name.lower() == "translator.jsxinc":
                 continue
             found = False
-            with open(source) as source_file:
+            with open(source, 'r', encoding="utf8") as source_file:
                 line_num = 1
                 for line in source_file.readlines():
                     match = re_source.search( line )
