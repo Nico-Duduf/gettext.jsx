@@ -80,7 +80,7 @@ def extract( source_path ):
                 continue
             found = False
             with open(source) as source_file:
-                line_num = 0
+                line_num = 1
                 for line in source_file.readlines():
                     match = re_source.search( line )
                     if match:
