@@ -1,8 +1,8 @@
 import json
 
 # Load JSON file
-jsonPath = "../../After-Effects/Duik/DuGR/inc/tr/DuGR_fr.json"
-poPath = "../../After-Effects/Duik/DuGR/translation/DuGR.po"
+jsonPath = "../../After-Effects/Duik/DuGR/inc/tr/DuGR_zh.json"
+poPath = "../../After-Effects/Duik/DuGR/translation/DuGR_zh.po"
 
 poStr = """# Translations template for DuGR.
 # Copyright (C) 2022 RxLaboratory
@@ -13,7 +13,7 @@ poStr = """# Translations template for DuGR.
 msgid ""
 msgstr ""
 "Project-Id-Version: DuGR 4.0.X\\n"
-"POT-Creation-Date: 2022-08-02 15:56\\n"
+"POT-Creation-Date: 2022-08-02 18:00\\n"
 "PO-Revision-Date: \\n"
 "Last-Translator: \\n"
 "Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
@@ -21,7 +21,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
 "Genereated-By: gettext.jsxinc\\n"
-"Language: fr\\n"
+"Language: zh\\n"
+
 """
 
 with open(jsonPath, "r", encoding="utf8") as jsonFile:

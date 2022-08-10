@@ -3,22 +3,25 @@ import os
 import re
 
 source_paths = (
+    "../../After-Effects/Duik/inc",
+    "../../After-Effects/Duik/DuSan/inc",
     "../../After-Effects/Duik/DuGR/inc",
-    "../../After-Effects/Duik/DuGR/DuAEF/inc",
-    "../../After-Effects/Duik/DuGR/DuAEF/DuESF/inc",
+    "../../After-Effects/Duik/DuIO/inc",
+    "../../After-Effects/Duik/DuAEF/inc",
+    "../../After-Effects/Duik/DuAEF/DuESF/inc",
 )
-pot_path = "../../After-Effects/Duik/DuGR/translation/DuGR.pot"
+pot_path = "../../After-Effects/Duik/translation/Duik.pot"
 
-po_str = """# Translations template for DuGR.
+po_str = """# Translations template for Duik.
 # Copyright (C) 2022 RxLaboratory
-# This file is distributed under the same license as the DuGR project.
+# This file is distributed under the same license as the Duik project.
 # RxLaboratory <contact@rxlaboratory.org>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DuGR 4.0.X\\n"
-"POT-Creation-Date: 2022-08-02 15:56\\n"
+"Project-Id-Version: Duik 17.0.X\\n"
+"POT-Creation-Date: 2022-08-10 17:30\\n"
 "PO-Revision-Date: \\n"
 "Last-Translator: \\n"
 "Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
@@ -26,7 +29,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\\n"
 "Content-Transfer-Encoding: 8bit\\n"
 "Genereated-By: gettext.jsxinc\\n"
-"Language: fr\\n"
 """
 
 po_ids = []
