@@ -33,9 +33,9 @@ msgstr ""
 
 po_ids = []
 
-re_source = re.compile('(?:\\s+|\\.)(?:_|__|tr|gettext)\\s*\\(?\\s*(\'|")(.+)\\1(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
-re_source_plural = re.compile('(?:\\s+|\\.)(?:_n|ngettext)\\s*\\(?\\s*(\'|")(.+)\\1\\s*,\\s*(\'|")(.+)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
-re_source_context = re.compile('(?:\\s+|\\.)(?:_p|pgettext)\\s*\\(?\\s*(\'|")(.+)\\1\\s*,\\s*(\'|")(.+)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
+re_source = re.compile('(?:\\s+|\\.)(?:_|__|tr|gettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1(?:(?:.*\\s*\\/\\/\\\/?\\s*TRANSLATORS:\\s*)(.+))?')
+re_source_plural = re.compile('(?:\\s+|\\.)(?:_n|ngettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1\\s*,\\s*("|\')((?:\\\\\\3|(?:(?!\\3).))*)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
+re_source_context = re.compile('(?:\\s+|\\.)(?:_p|pgettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1\\s*,\\s*("|\')((?:\\\\\\3|(?:(?!\\3).))*)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
 # TODO re_source_all
 
 def insertEntry(msgid, msgid_plural=None, msgctxt=None, comment=None, source_name=None, source_line=None):
