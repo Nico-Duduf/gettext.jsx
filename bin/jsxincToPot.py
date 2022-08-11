@@ -21,7 +21,7 @@ po_str = """# Translations template for Duik.
 msgid ""
 msgstr ""
 "Project-Id-Version: Duik 17.0.X\\n"
-"POT-Creation-Date: 2022-08-10 17:30\\n"
+"POT-Creation-Date: 2022-08-11 11:30\\n"
 "PO-Revision-Date: \\n"
 "Last-Translator: \\n"
 "Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
@@ -47,7 +47,8 @@ def insertEntry(msgid, msgid_plural=None, msgctxt=None, comment=None, source_nam
         return
 
     if comment:
-        po_str += "\n#. \"" + comment + "\""
+        comment = comment.split("\n")
+        po_str += '\n#. "' + '"\n#. "'.join(comment) + '"'
 
     if source_name and source_line is not None:
         po_str += "\n#: " + source_name + ":" + str(source_line)
@@ -70,6 +71,8 @@ def insertEntry(msgid, msgid_plural=None, msgctxt=None, comment=None, source_nam
 
     po_ids.append(msgid)
 
+entries = {}
+
 def extract( source_path ):
     for source_name in os.listdir(source_path):
         source = source_path + "/" + source_name
@@ -83,34 +86,54 @@ def extract( source_path ):
                 line_num = 1
                 for line in source_file.readlines():
                     match = re_source.search( line )
+                    entry = {
+                        "msgid": "",
+                        "msgid_plural": None,
+                        "msgctxt": None,
+                        "comment": None,
+                        "source_name": None,
+                        "source_line": None
+                    }
                     if match:
                         found = True
-                        insertEntry( match.group(2),
-                            comment=match.group(3),
-                            source_name=source_name,
-                            source_line=line_num
-                            ) 
+                        entry["msgid"] =  match.group(2)
+                        entry["comment"] =  match.group(3)
+                        entry["source_name"] = source_name
+                        entry["source_line"] = line_num
                         
                     match = re_source_plural.search( line )
                     if match:
                         found = True
-                        insertEntry(match.group(2),
-                            comment=match.group(5),
-                            msgid_plural = match.group(4),
-                            source_name=source_name,
-                            source_line=line_num
-                            )
+                        entry["msgid"] =  match.group(2)
+                        entry["comment"] =  match.group(5)
+                        entry["msgid_plural"] =  match.group(4)
+                        entry["source_name"] =  source_name
+                        entry["source_line"] =  line_num
                     
                     match = re_source_context.search( line )
                     if match:
                         found = True
-                        insertEntry(match.group(4),
-                            comment=match.group(5),
-                            msgctxt = match.group(2),
-                            source_name=source_name,
-                            source_line=line_num
-                            ) 
-                        
+                        entry["msgid"] =  match.group(4)
+                        entry["comment"] =  match.group(5)
+                        entry["msgctxt"] =  match.group(2)
+                        entry["source_name"] =  source_name
+                        entry["source_line"] =  line_num
+
+                    # Add/Update
+                    if entry["msgid"] != "":
+                        h = entry["msgid"]
+                        if entry["msgctxt"]:
+                            h = h +  entry["msgctxt"]
+
+                        # Update
+                        if h in entries:
+                            if entries[h]["comment"] and entry["comment"]:
+                                if entries[h]["comment"] != entry["comment"]:
+                                    entries[h]["comment"] = entries[h]["comment"] + "\n" + entry["comment"]
+                            elif entry["comment"]:
+                                entries[h]["comment"] = entry["comment"]
+                        else:
+                            entries[h] = entry
                     
                     line_num += 1
 
@@ -122,6 +145,16 @@ def extract( source_path ):
 
 for source_path in source_paths:
     extract(source_path)
+
+for e in entries:
+    insertEntry(
+        entries[e]["msgid"],
+        msgid_plural=entries[e]["msgid_plural"],
+        msgctxt=entries[e]["msgctxt"],
+        comment=entries[e]["comment"],
+        source_name=entries[e]["source_name"],
+        source_line=entries[e]["source_line"]
+    )
 
 with open(pot_path, 'w', encoding="utf8") as pot_file:
     pot_file.write(po_str)
