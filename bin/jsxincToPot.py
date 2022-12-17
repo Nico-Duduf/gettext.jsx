@@ -12,16 +12,31 @@ source_paths = (
 )
 pot_path = "../../After-Effects/Duik/translation/Duik.pot"
 
-po_str = """# Translations template for Duik.
+
+"""source_paths = (
+    "../../After-Effects/Duik/DuSan/inc",
+    "../../After-Effects/Duik/DuSan/DuAEF/inc",
+    "../../After-Effects/Duik/DuSan/DuAEF/DuESF/inc",
+)"""
+
+"""source_paths = (
+    "../../After-Effects/Duik/DuGR/inc",
+    "../../After-Effects/Duik/DuGR/DuAEF/inc",
+    "../../After-Effects/Duik/DuGR/DuAEF/DuESF/inc",
+)
+pot_path = "../../After-Effects/Duik/DuGR/translation/DuGR.pot"
+"""
+
+po_str = """# Translations template for DuGR.
 # Copyright (C) 2022 RxLaboratory
-# This file is distributed under the same license as the Duik project.
+# This file is distributed under the same license as the DuGR project.
 # RxLaboratory <contact@rxlaboratory.org>, 2022.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Duik 17.0.X\\n"
-"POT-Creation-Date: 2022-08-11 11:30\\n"
+"Project-Id-Version: DuGR 5.0.X\\n"
+"POT-Creation-Date: 2022-09-28 10:30\\n"
 "PO-Revision-Date: \\n"
 "Last-Translator: \\n"
 "Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
@@ -33,7 +48,7 @@ msgstr ""
 
 po_ids = []
 
-re_source = re.compile('(?:\\s+|\\.)(?:_|__|tr|gettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1(?:(?:.*\\s*\\/\\/\\\/?\\s*TRANSLATORS:\\s*)(.+))?')
+re_source = re.compile('(?:\\s+|\\.)(?:_|__|tr|gettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1(?:(?:.*\\s*\\/\\/\\/\\s*TRANSLATORS:\\s*)(.+))?')
 re_source_plural = re.compile('(?:\\s+|\\.)(?:_n|ngettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1\\s*,\\s*("|\')((?:\\\\\\3|(?:(?!\\3).))*)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
 re_source_context = re.compile('(?:\\s+|\\.)(?:_p|pgettext)\\s*\\(?\\s*("|\')((?:\\\\\\1|(?:(?!\\1).))*)\\1\\s*,\\s*("|\')((?:\\\\\\3|(?:(?!\\3).))*)\\3(?:(?:.*\\s*\\/\\/\\/?\\s*TRANSLATORS:\\s*)(.+))?')
 # TODO re_source_all
