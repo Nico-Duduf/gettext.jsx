@@ -131,7 +131,7 @@ def extract( source_path ):
                         entry["source_line"] =  line_num
 
                     # Decode special characters
-                    entry["msgid"] = entry["msgid"].encode( 'utf-8' ).decode( 'unicode-escape' )
+                    entry["msgid"] = entry["msgid"].encode( 'raw-unicode-escape' ).decode( 'unicode-escape' )
                     # Except new lines
                     entry["msgid"] = entry["msgid"].replace("\n","\\n")
                     # And "
