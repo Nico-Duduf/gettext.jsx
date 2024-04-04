@@ -134,6 +134,8 @@ def extract( source_path ):
                     entry["msgid"] = entry["msgid"].encode( 'utf-8' ).decode( 'unicode-escape' )
                     # Except new lines
                     entry["msgid"] = entry["msgid"].replace("\n","\\n")
+                    # And "
+                    entry["msgid"] = entry["msgid"].replace('"','\\"')
 
                     # Add/Update
                     if entry["msgid"] != "":
