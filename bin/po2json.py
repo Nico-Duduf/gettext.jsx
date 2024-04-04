@@ -5,8 +5,8 @@ import polib
 
 #po_path = "../../After-Effects/Duik/DuGR/translation/DuGR_pd.po"
 #json_path = "../../After-Effects/Duik/DuGR/inc/tr/DuGR_zh.json"
-po_path = "../../After-Effects/Duik/translation/Duik_zh.po"
-json_path = "../../After-Effects/Duik/inc/tr/Duik_zh.json"
+po_path = "../../After-Effects/Duik/translation/Duik_eo_UY.po"
+json_path = "../../After-Effects/Duik/src/Scripts/ScriptUI Panels/inc/tr/Duik_eo_UY.json"
 #po_path = "examples/template.po"
 #json_path = "examples/test.json"
 
@@ -63,7 +63,7 @@ if os.path.isfile(po_path):
 
     with open(json_path, 'w', encoding='utf8') as json_file:
         json.dump(json_data, json_file)
-    
+
     print("JSON created at " + json_path)
 
 else:

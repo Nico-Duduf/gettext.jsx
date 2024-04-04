@@ -3,12 +3,7 @@ import os
 import re
 
 source_paths = (
-    "../../After-Effects/Duik/inc",
-    "../../After-Effects/Duik/DuSan/inc",
-    "../../After-Effects/Duik/DuGR/inc",
-    "../../After-Effects/Duik/DuIO/inc",
-    "../../After-Effects/Duik/DuAEF/inc",
-    "../../After-Effects/Duik/DuAEF/DuESF/inc",
+    "../../After-Effects/Duik/src",
 )
 pot_path = "../../After-Effects/Duik/translation/Duik.pot"
 
@@ -27,16 +22,16 @@ pot_path = "../../After-Effects/Duik/translation/Duik.pot"
 pot_path = "../../After-Effects/Duik/DuGR/translation/DuGR.pot"
 """
 
-po_str = """# Translations template for DuGR.
-# Copyright (C) 2022 RxLaboratory
-# This file is distributed under the same license as the DuGR project.
-# RxLaboratory <contact@rxlaboratory.org>, 2022.
+po_str = """# Translations template for Duik.
+# Copyright (C) 2022-2024 RxLaboratory
+# This file is distributed under the same license as the Duik project.
+# RxLaboratory <contact@rxlaboratory.org>, 2024.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: DuGR 5.0.X\\n"
-"POT-Creation-Date: 2022-09-28 10:30\\n"
+"Project-Id-Version: Duik 17.X.X\\n"
+"POT-Creation-Date: 2024-03-26 10:30\\n"
 "PO-Revision-Date: \\n"
 "Last-Translator: \\n"
 "Language-Team: RxLaboratory <http://rxlaboratory.org>\\n"
@@ -92,11 +87,12 @@ def extract( source_path ):
     for source_name in os.listdir(source_path):
         source = source_path + "/" + source_name
         if os.path.isfile(source):
-            if not source_name.lower().endswith(".jsxinc"):
+            if not source_name.lower().endswith(".jsxinc") and not source_name.lower().endswith(".jsx"):
                 continue
-            if source_name.lower() == "translator.jsxinc":
+            if source_name.lower() == "translator.jsxinc" or source_name.lower() == "translator.jsx":
                 continue
             found = False
+            print("> Scanning " + source)
             with open(source, 'r', encoding="utf8") as source_file:
                 line_num = 1
                 for line in source_file.readlines():
@@ -133,6 +129,11 @@ def extract( source_path ):
                         entry["msgctxt"] =  match.group(2)
                         entry["source_name"] =  source_name
                         entry["source_line"] =  line_num
+
+                    # Decode special characters
+                    entry["msgid"] = entry["msgid"].encode( 'utf-8' ).decode( 'unicode-escape' )
+                    # Except new lines
+                    entry["msgid"] = entry["msgid"].replace("\n","\\n")
 
                     # Add/Update
                     if entry["msgid"] != "":
