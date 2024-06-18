@@ -3,9 +3,9 @@ import os
 import re
 
 source_paths = (
-    "../../After-Effects/Duik/src",
+    "../../After-Effects/DuGR/src",
 )
-pot_path = "../../After-Effects/Duik/translation/Duik.pot"
+pot_path = "../../After-Effects/DuGR/translation/DuGR.pot"
 
 
 """source_paths = (
@@ -22,7 +22,7 @@ pot_path = "../../After-Effects/Duik/translation/Duik.pot"
 pot_path = "../../After-Effects/Duik/DuGR/translation/DuGR.pot"
 """
 
-po_str = """# Translations template for Duik.
+po_str = """# Translations template for DuGR.
 # Copyright (C) 2022-2024 RxLaboratory
 # This file is distributed under the same license as the Duik project.
 # RxLaboratory <contact@rxlaboratory.org>, 2024.

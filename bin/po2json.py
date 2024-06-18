@@ -3,10 +3,10 @@ import json
 import os
 import polib
 
-#po_path = "../../After-Effects/Duik/DuGR/translation/DuGR_pd.po"
-#json_path = "../../After-Effects/Duik/DuGR/inc/tr/DuGR_zh.json"
-po_path = "../../After-Effects/Duik/translation/Duik_eo_UY.po"
-json_path = "../../After-Effects/Duik/src/Scripts/ScriptUI Panels/inc/tr/Duik_eo_UY.json"
+po_path = "../../After-Effects/DuGR/translation/DuGR_pd_FR.po"
+json_path = "../../After-Effects/DuGR/src/Scripts/ScriptUI Panels/inc/tr/DuGR_pd_FR.json"
+#po_path = "../../After-Effects/Duik/translation/Duik_es_ES.po"
+#json_path = "../../After-Effects/Duik/src/Scripts/ScriptUI Panels/inc/tr/Duik_es_ES.json"
 #po_path = "examples/template.po"
 #json_path = "examples/test.json"
 
